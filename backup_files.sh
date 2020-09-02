@@ -22,6 +22,6 @@ echo ""
 # Delete old backups (and logs)
 echo Deleting backups older than "$backupRetention" minutes
 echo ""
-find $backupTo -name "${backupNamePrefix}*" -cmin +$retentionMinutes | xargs -r rm -v
+find $backupTo -name "${backupNamePrefix}*" -cmin +$backupRetention | xargs -r rm -v
 echo ""
 echo Backup finished at $(date +"%T")
