@@ -9,19 +9,19 @@ backupNamePrefix="weekly_file_backup_" # Prefix of the resulting .tar.gz
 backupRetention=47520 # 33 days, delete backups older than x minutes
 
 # Current date and time
-backupDate=`date +%Y-%m-%d_%H-%M`
+backupDate=$(date +%Y-%m-%d_%H-%M)
 
 # Archive and compress the files
-echo Backup from $backupTargets
+echo Backup from "$backupTargets"
 echo to $backupTo
-echo Backup started at $(date +"%T")
+echo Backup started at "$(date +"%T")"
 echo ""
-tar -vcf "$backupTo"/"$backupNamePrefix""$backupDate".tar.gz -z $backupTargets
+tar -vcf "$backupTo"/"$backupNamePrefix""$backupDate".tar.gz -z "$backupTargets"
 echo ""
 
 # Delete old backups (and logs)
 echo Deleting backups older than "$backupRetention" minutes
 echo ""
-find $backupTo -name "${backupNamePrefix}*" -cmin +$backupRetention | xargs -r rm -v
+find $backupTo -name "${backupNamePrefix}*" -cmin +$backupRetention -print0 | xargs -r rm -v
 echo ""
-echo Backup finished at $(date +"%T")
+echo Backup finished at "$(date +"%T")"
