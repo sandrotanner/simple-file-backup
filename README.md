@@ -1,4 +1,6 @@
-# simple-file-backup
+# Simple file backup
+![ShellCheck](https://github.com/sandrotanner/simple-file-backup/workflows/ShellCheck/badge.svg)
+
 Backs up a given set of directories and files into a gziped tar archive and **deletes** backups older than the configured retention time.
 
 ## Example usage (crontab)
